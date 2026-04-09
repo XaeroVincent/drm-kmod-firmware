@@ -1,6 +1,6 @@
 _VALID_I915KMODS=skylake broxton kabylake geminilake cannonlake \
 	icelake elkhartlake tigerlake rocketlake alderlake \
-	dg1 dg2 meteorlake
+	dg1 dg2 meteorlake battlemage
 
 I915KMODS?=	${_VALID_I915KMODS}
 
@@ -75,8 +75,8 @@ SUBDIR+=	tgldmc_208 \
 		tglguc_3520 \
 		tglguc_6200 \
 		tglguc_6903 \
-		tglguc_7011 \
 		tglguc_70 \
+		tglguc_7011 \
 		tglhuc \
 		tglhuc_750 \
 		tglhuc_793
@@ -89,13 +89,13 @@ SUBDIR+=	rkldmc_202 \
 
 .if ${I915KMODS:Malderlake}
 SUBDIR+=	adlpdmc \
-		adlsdmc_201 \
 		adlpdmc_210 \
 		adlpdmc_216 \
 		adlpguc_6203 \
 		adlpguc_6903 \
 		adlpguc_70 \
-		adlpguc_7011
+		adlpguc_7011 \
+		adlsdmc_201
 .endif
 
 .if ${I915KMODS:Mdg1}
@@ -115,11 +115,15 @@ SUBDIR+=	dg2dmc_207 \
 .endif
 
 .if ${I915KMODS:Mmeteorlake}
-SUBDIR+=	mtldmc_210 \
-		mtldmc \
+SUBDIR+=	mtldmc \
+		mtldmc_210 \
 		mtlgsc_1 \
 		mtlguc_70 \
 		mtlhucgsc
+.endif
+
+.if ${I915KMODS:Mbattlemage}
+SUBDIR+=	bmgdmc
 .endif
 
 SUBDIR_PARALLEL=
